@@ -20,5 +20,17 @@ module "cluster" {
    stack = "${random_id.stack.hex}"
 }
 
+module "node_command" {
+   source = "./modules/node_command"
+   providers = {
+           rancher2 = rancher2
+        }
+   stack = "${random_id.stack.hex}"
+   cluster_nodes_ips = var.cluster_nodes_ips
+   cluster_node_command = module.cluster.cluster_node_command
+   wait_for = [ module.cluster.cluster_name ]
+}
+
+
 
 
