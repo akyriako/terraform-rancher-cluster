@@ -20,14 +20,16 @@ module "cluster" {
    stack = "${random_id.stack.hex}"
 }
 
-module "node_command" {
-   source = "./modules/node_command"
+module "nodes" {
+   source = "./modules/nodes"
    providers = {
            rancher2 = rancher2
         }
    stack = "${random_id.stack.hex}"
    cluster_nodes_ips = var.cluster_nodes_ips
    cluster_node_command = module.cluster.cluster_node_command
+   remote_sudoer = var.remote_sudoer
+   private_key_file = var.private_key_file
    wait_for = [ module.cluster.cluster_name ]
 }
 

@@ -32,3 +32,6 @@ override.tf.json
 *.terraform.lock.hcl
 
 **/secrets/*
+
+ansible.cfg
+inventory
