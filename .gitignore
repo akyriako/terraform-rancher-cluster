@@ -35,3 +35,4 @@ override.tf.json
 
 ansible.cfg
 inventory
+playbook.yml

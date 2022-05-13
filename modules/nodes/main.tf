@@ -29,17 +29,17 @@ resource "local_file" "ansible_config" {
   filename    = "${path.module}/ansible/ansible.cfg"
 }
 
-# resource "local_file" "ansible_playbook" {
+resource "local_file" "ansible_playbook" {
 
-#   content     = templatefile("${path.module}/ansible/templates/playbook.tpl", 
-#     { 
-#       cluster_node_command = var.cluster_node_command[0]
-#     })
-#   filename    = "${path.module}/ansible/playbook.yml"
+  content     = templatefile("${path.module}/ansible/templates/playbook.tpl", 
+    { 
+      cluster_node_command = var.cluster_node_command[0]
+    })
+  filename    = "${path.module}/ansible/playbook.yml"
 
-#   provisioner "local-exec" {
-#     working_dir = "${path.module}/ansible"
-#     command     = "ansible-playbook -i inventory playbook.yml"
-#   }
+  provisioner "local-exec" {
+    working_dir = "${path.module}/ansible"
+    command     = "ansible-playbook -i inventory playbook.yml"
+  }
 
-# }
+}
